@@ -1,0 +1,95 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: #f0f0f0;
+}
+h1 {
+  margin: 50px 0 30px;
+  text-align: center;
+}
+.faq-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.faq {
+  background-color: transparent;
+  border: 1px solid #9fa4a8;
+  border-radius: 10px;
+  padding: 30px;
+  margin: 20px 0;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+.faq.active {
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+.faq.active::before,
+.faq.active::after {
+  /* 内容是 对话气泡 */
+  content: '\f075';
+  font-family: 'Font Awesome 5 Free';
+  font-size: 7rem;
+  color: #2ecc71;
+  position: absolute;
+  opacity: 0.2;
+  top: 20px;
+  left: 20px;
+  /* 使其在内容下方 */
+  z-index: 0;
+}
+.faq.active::before {
+  color: #3498db;
+  top: -10px;
+  left: -30px;
+  /* 绕y轴旋转180度 */
+  transform: rotateY(180deg);
+}
+.faq.active .faq-toggle .fa-times {
+  /* 当faq被激活时 显示关闭图标 并设置为白色 */
+  color: #fff;
+  display: block;
+}
+.faq.active .faq-toggle .fa-chevron-down {
+  /* faq被激活 隐藏向下箭头图标 */
+  display: none;
+}
+.faq.active .faq-toggle {
+  /* faq被激活 改变背景颜色 */
+  background-color: #9fa4a8;
+}
+.faq-title {
+  margin: 0 35px 0 0;
+}
+.faq-text {
+  display: none;
+  margin: 30px 0 0;
+}
+.faq.active .faq-text {
+  /* 被激活时 显示文字 */
+  display: block;
+}
+.faq-toggle {
+  background-color: transparent;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  padding: 0;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  height: 30px;
+  width: 30px;
+}
+.faq-toggle:focus {
+  outline: 0;
+}
+.faq-toggle .fa-times {
+  display: none;
+}
