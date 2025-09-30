@@ -1,3 +1,4 @@
+
 const tagsEl = document.getElementById('tags')
 const textarea = document.getElementById('textarea')
 
@@ -77,3 +78,4 @@ function highlightTag(tag) {
 function unHighlightTag(tag) {
   tag.classList.remove('highlight')
 }
+
