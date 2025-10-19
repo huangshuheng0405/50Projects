@@ -3,7 +3,7 @@ const panels = document.querySelectorAll('.panel')
 panels.forEach((panel) => {
   panel.addEventListener('click', () => {
     removeClass()
-    panel.classList.add('active')
+    requestAnimationFrame(() => panel.classList.add('active'))
   })
 })
 
