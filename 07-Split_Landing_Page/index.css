@@ -18,6 +18,17 @@ body {
   overflow: hidden;
   margin: 0;
 }
+h1.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 h1 {
   font-size: 3.5rem;
   color: #fff;
@@ -27,6 +38,15 @@ h1 {
   /*  */
   transform: translateX(-50%);
   /* 确保文本不会换行 */
+  white-space: nowrap;
+}
+.container h2 {
+  font-size: 3.5rem;
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%);
   white-space: nowrap;
 }
 .btn {
@@ -45,6 +65,10 @@ h1 {
   text-transform: uppercase;
   padding: 1.5rem;
   width: 15rem;
+}
+.btn:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
 }
 .split.left .btn:hover {
   background-color: var(--left-btn-hover-color);
@@ -68,7 +92,7 @@ h1 {
 }
 .split.left {
   left: 0;
-  background: url(ps.jpg) no-repeat;
+  background: url(./ps.jpg) no-repeat;
   background-size: cover;
 }
 .split.left::before {
@@ -80,7 +104,7 @@ h1 {
 }
 .split.right {
   right: 0;
-  background: url(xbox.jpg) no-repeat;
+  background: url(./xbox.jpg) no-repeat;
   background-size: cover;
 }
 .split.right::before {
@@ -91,10 +115,12 @@ h1 {
   background-color: var(--right-bg-color);
 }
 .split.right,
-.split.left,
+.split.left {
+  transition: width var(--speed) ease-in-out;
+}
 .split.left::before,
 .split.right::before {
-  transition: all var(--speed) ease-in-out;
+  transition: background-color var(--speed) ease-in-out;
 }
 .hover-left .left {
   width: var(--hover-width);
@@ -109,12 +135,32 @@ h1 {
   width: var(--other-width);
 }
 @media (max-width: 800px) {
-  h1 {
+  h1,
+  .container h2 {
     font-size: 2rem;
     top: 30%;
   }
   .btn {
     padding: 1.2rem;
     width: 12rem;
+  }
+  .split {
+    position: static;
+    width: 100%;
+    height: 50vh;
+  }
+  .hover-left .left,
+  .hover-left .right,
+  .hover-right .left,
+  .hover-right .right {
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .split.right,
+  .split.left,
+  .split.left::before,
+  .split.right::before {
+    transition: none;
   }
 }
